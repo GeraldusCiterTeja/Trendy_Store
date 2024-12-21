@@ -50,7 +50,7 @@ main {
 article {
   width: 100%;
   margin: 2rem 0;
-  padding-left: 2rem;
+  padding: 2rem;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -274,13 +274,32 @@ header .shoppingCart h5 {
   width: 100%;
 }
 
-.home article {
+
+.home article{
+  padding: 0 4rem;
   justify-content: left;
+}
+
+@keyframes slide-in{
+  0%{
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .home h2 {
   color: #fff;
-  font-size: 2.5rem;
+  font-size: 4rem;
+  text-shadow:2px 8px 8px rgba(0, 0, 0, 0.9);
+  animation: slide-in 2s ease-in-out;
+}
+
+.home span{
+  color:#ffc300;
 }
 
 h3 {
@@ -634,7 +653,6 @@ footer h4 {
 /* Media Query */
 
 /* Laptop */
-
 @media only screen and(max-width: 1366px) {
   html {
     font-size: 75%;
@@ -649,7 +667,7 @@ footer h4 {
 
   header {
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
   }
 
   .navbar-extra {
@@ -694,8 +712,18 @@ footer h4 {
     color: #ffc300;
   }
 
-  .home h1 {
-    text-align: center;
+  .home h2 {
+    font-size: 2.5rem;
+  }
+
+  .home button{
+    width: 20rem;
+    height: 5rem;
+  }
+
+  .productCategory .container {
+    justify-content: center;
+    gap: 5rem;
   }
 
   .productCard {
@@ -705,6 +733,13 @@ footer h4 {
 
   .productCard img {
     width: 20rem;
+  }
+
+  /* testimoni */
+  .testimoni article{
+    padding: 0;
+    margin: 0;
+    gap: 3rem;
   }
 
   /* form-search */
@@ -767,16 +802,14 @@ footer h4 {
 /* Mobile Phone */
 @media only screen and (max-width: 450px) {
   html {
-    font-size: 75%;
+    font-size: 60%;
   }
 
-  .home h1 {
-    font-size: 5rem;
-    text-align: center;
+  .home h2 {
+    padding: 0 2rem;
   }
 
   .home article {
-    text-align: center;
     padding: 0;
   }
 
@@ -786,6 +819,7 @@ footer h4 {
 
   .productCategory h3 {
     text-align: center;
+    font-size: 2.5rem;
   }
 
   .productCard {
@@ -798,6 +832,10 @@ footer h4 {
   }
 
   /* testimoni */
+
+  .testimoni h3{
+    font-size: 2.5rem;
+  }
 
   .testimoniCard {
     width: 30rem;
@@ -818,6 +856,11 @@ footer h4 {
     left: 5%;
     height: auto;
     right: 5%;
+  }
+
+  /* map */
+  .map{
+    height: 300px;
   }
 
   
