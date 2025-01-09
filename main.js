@@ -36,33 +36,3 @@ document.addEventListener('click', (e)=>{
     shoppingCart.classList.remove("active");
   }
 })
-
-
-// detail Product
-const detail = document.querySelectorAll('.detail');
-const detailProduct = document.querySelector(".detailProduct");
-
-detail.addEventListener('click', function(e){
-  e.preventDefault()
-  alert("Berhasil")
-})
-
-detail.forEach(button => {
-  button.onclick = (e)=>{
-    alert("Berhasil")
-    detailProduct.style.display = 'flex';
-    e.preventdefault()
-  }
-});
-
-document.querySelector('.deleteDetail').onclick = (e)=>{
-  detailProduct.style.display = 'none';
-  e.preventDefault()
-}
-
-// click di luar detail 
-window.onclick = (e) =>{
-  if(e.target === detailProduct){
-    detailProduct.style.display = 'none';
-  }
-}

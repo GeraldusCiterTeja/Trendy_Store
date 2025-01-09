@@ -23,76 +23,110 @@ document.addEventListener("alpine:init", () => {
         info: "limited edition only 50pcs",
       },
       {
-        id: 1,
+        id: 4,
         name: "Baju Kaos",
         img: "4.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 2,
+        id: 5,
         name: "Baju Kaos  ",
         img: "5.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 3,
+        id: 6,
         name: "Baju Kaos",
         img: "6.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 1,
+        id: 7,
         name: "Baju Kaos",
         img: "7.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 2,
+        id: 8,
         name: "Baju Kaos  ",
         img: "8.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 3,
+        id: 9,
         name: "Baju Kaos",
         img: "9.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 1,
+        id: 10,
         name: "Baju Kaos",
         img: "10.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 2,
+        id: 11,
         name: "Baju Kaos  ",
         img: "11.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 3,
+        id: 12,
         name: "Baju Kaos",
         img: "12.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
       {
-        id: 3,
-        name: "Baju Kaos",
+        id: 13,
+        name: "baju kaos",
         img: "13.jpg",
         price: 150000,
         info: "limited edition only 50pcs",
       },
+      {
+        id: 14,
+        name: "baju wanita",
+        img: "14.jpg",
+        price: 150000,
+        info: "limited edition only 50pcs",
+      },
+      {
+        id: 15,
+        name: "baju wanita",
+        img: "15.jpg",
+        price: 150000,
+        info: "limited edition only 50pcs",
+      },
+      {
+        id: 16,
+        name: "baju wanita",
+        img: "16.jpg",
+        price: 150000,
+        info: "limited edition only 50pcs",
+      },
+      {
+        id: 17,
+        name: "baju wanita",
+        img: "17.jpg",
+        price: 150000,
+        info: "limited edition only 50pcs",
+      },
     ],
+    searchQuery: "",
+    get filteredItems() {
+      return this.items.filter(item => 
+        item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
   }));
 
   Alpine.store("cart", {
@@ -103,7 +137,7 @@ document.addEventListener("alpine:init", () => {
       // Cek apakah ada barang di cart
       const cartItem = this.items.find((item) => item.id === newItem.id);
 
-      // Jika belum ada 
+      // Jika belum ada
       if (!cartItem) {
         this.items.push({ ...newItem, quantity: 1, total: newItem.price });
         this.quantity++;
@@ -140,12 +174,12 @@ document.addEventListener("alpine:init", () => {
             this.quantity--;
             this.total -= item.price;
             return item;
-          } 
+          }
         });
-      } else if(cartItem.quantity === 1){
+      } else if (cartItem.quantity === 1) {
         // Jika barangmya sisa 1
         this.items = this.items.filter((item) => item.id !== id);
-        this.quantity --;
+        this.quantity--;
         this.total -= cartItem.price;
       }
     },
@@ -153,47 +187,49 @@ document.addEventListener("alpine:init", () => {
 });
 
 // form Validation
-const checkoutButton = document.querySelector('.checkout-button');
+const checkoutButton = document.querySelector(".checkout-button");
 checkoutButton.disabled = true;
 
-const form = document.querySelector('#checkoutForm');
-form.addEventListener('keyup', function(){
-    for(let i = 0 ; i < form.elements.length; i++){
-        if(form.elements[i].value.length !== 0 ){
-            checkoutButton.classList.remove('disabled');
-            checkoutButton.classList.add('disabled');
-        }else{
-            return false;
-        }
+const form = document.querySelector("#checkoutForm");
+form.addEventListener("keyup", function () {
+  for (let i = 0; i < form.elements.length; i++) {
+    if (form.elements[i].value.length !== 0) {
+      checkoutButton.classList.remove("disabled");
+      checkoutButton.classList.add("disabled");
+    } else {
+      return false;
     }
-    checkoutButton.disabled = false;
-    checkoutButton.classList.remove('disabled');
-})
+  }
+  checkoutButton.disabled = false;
+  checkoutButton.classList.remove("disabled");
+});
 
 // // Kirim data ketika tombol button di click
-checkoutButton.addEventListener('click', function(e){
+checkoutButton.addEventListener("click", function (e) {
   e.preventDefault();
   const formData = new FormData(form);
   const data = new URLSearchParams(formData);
   const objData = Object.fromEntries(data);
-  console.log(objData)
+  console.log(objData);
   const message = formatMessage(objData);
-  window.open('http://wa.me/6285752735600?text=' + encodeURIComponent(message));
-})
+  window.open("http://wa.me/6285752735600?text=" + encodeURIComponent(message));
+});
 
 // // Format Pesan Whatsapp
-const formatMessage = (obj) =>{
+const formatMessage = (obj) => {
   return `Data Customer
     Nama: ${obj.name}
     Email: ${obj.email}
     Address: ${obj.address}
     No HP: ${obj.phone}
 Data Pesanan
-  ${JSON.parse(obj.items).map((item) => `${item.name} (${item.quantity} x ${rupiah(item.total)}) \n`)}
+  ${JSON.parse(obj.items).map(
+    (item) => `${item.name} (${item.quantity} x ${rupiah(item.total)}) \n`
+  )}
 
 TOTAL: ${rupiah(obj.total)}
 Terima Kasih`;
-}
+};
 
 // Konversi ke rupiah
 const rupiah = (number) => {
@@ -202,4 +238,4 @@ const rupiah = (number) => {
     currency: "IDR",
     minimumFractionDigits: 0,
   }).format(number);
-}
+};

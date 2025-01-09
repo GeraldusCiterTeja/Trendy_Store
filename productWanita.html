@@ -23,9 +23,12 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- Alpine.js -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
   </head>
-  <body x-data="products">
+  <body x-data="productsWanita">
     <header x-data>
       <h1>Trendy_Store</h1>
       <nav class="navbar" id="navbar">
@@ -54,11 +57,11 @@
       <!-- from search  -->
       <div class="form-search">
         <input
-          x-model="searchQuery"
+         x-model="searchQuery"
           type="text"
           id="search-box"
           class="search-box"
-          placeholder="Cari produk..."
+          placeholder="Search here..."
         />
         <label for="search-box"><i class="bi bi-search"></i></label>
       </div>
@@ -71,7 +74,7 @@
             <div class="item-detail">
               <h4 x-text="item.name"></h4>
               <div class="item-price">
-                <span x-text="rupiah(item.price)"></span> &times;
+                <span x-text="rupiah(item.price)"></span> &times; 
                 <button id="remove" @click="$store.cart.remove(item.id)">
                   &minus;
                 </button>
@@ -129,13 +132,9 @@
       </div>
     </header>
 
-    </main>
     <!-- product -->
     <main class="productAll">
-      <h3>Product</h3>
-      <button class="buttonDiskon">
-        <a href="productSale.html">Cek Yang lagi Diskon</a>
-      </button>
+      <h3>Product Wanita</h3>
       <div class="container">
         <template x-for="item in filteredItems" :key="item.id">
           <div id="cardProduct" class="cardProduct">
@@ -145,13 +144,8 @@
               <p x-text="rupiah(item.price)"></p>
               <p x-text="item.info"></p>
               <div class="clickButton">
-                <button
-                  @click.prevent="$store.cart.add(item)"
-                  class="buttonCart"
-                  id="buttonCart"
-                >
-                  <i class="bi bi-cart4"></i>
-                </button>
+                <button @click.prevent="$store.cart.add(item)" class="buttonCart" id="buttonCart"
+                ><i class="bi bi-cart4"></i></button>
               </div>
             </div>
           </div>
@@ -172,7 +166,9 @@
         <ul>
           <li>Email: <a href="#">official.Trendy_Store@gmail.com</a></li>
           <li>Telepon: <a href="#">+6285752735600</a></li>
-          <li>Alamat: <a href="#">Bekasi</a></li>
+          <li>
+            Alamat: <a href="#">Bekasi</a>
+          </li>
         </ul>
       </div>
       <div class="footer1">
@@ -203,7 +199,7 @@
       </div>
     </footer>
     <script src="main.js"></script>
-    <script src="index.js"></script>
-    <script src="src/app.js"></script>
+    <script src="index.js"></script>  
+    <script src="src/wanita.js"></script>
   </body>
 </html>

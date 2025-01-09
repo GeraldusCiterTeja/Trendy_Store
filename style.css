@@ -50,7 +50,7 @@ main {
 article {
   width: 100%;
   margin: 2rem 0;
-  padding-left: 2rem;
+  padding: 2rem;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -274,13 +274,32 @@ header .shoppingCart h5 {
   width: 100%;
 }
 
-.home article {
+
+.home article{
+  padding: 0 4rem;
   justify-content: left;
+}
+
+@keyframes slide-in{
+  0%{
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .home h2 {
   color: #fff;
-  font-size: 2.5rem;
+  font-size: 4rem;
+  text-shadow:2px 8px 8px rgba(0, 0, 0, 0.9);
+  animation: slide-in 2s ease-in-out;
+}
+
+.home span{
+  color:#ffc300;
 }
 
 h3 {
@@ -308,6 +327,7 @@ h3 {
 .productCard h4 {
   font-size: 3rem;
   color: #fff;
+  text-align: center;
 }
 
 .productCategory .container {
@@ -416,15 +436,34 @@ footer h4 {
 }
 
 .productAll .container {
-  display: flex;
+  display: flex;  
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .productAll h3 {
   color: #fff;
+}
+
+.productAll .buttonDiskon{
+  background-color: #fff;
+}
+
+.productAll .buttonDiskon:hover{
+  background-color: #ffc300;
+}
+
+.productAll .buttonDiskon a{
+  color:#000;
+}
+
+.productAll .no-product{
+  font-size: 1rem;
+  color: #fff;
+  margin: 5rem;
 }
 
 .cardProduct {
@@ -435,6 +474,13 @@ footer h4 {
   width: 18rem;
   padding: 0.5rem 1rem;
   border: 1px solid black;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.cardProduct:hover{
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 .cardProduct img {
@@ -463,6 +509,16 @@ footer h4 {
 .productAll .buttonCart {
   padding: 0.5rem;
   width: 100%;
+}
+
+/* sale */
+.productAll .price{
+  display: flex;
+  gap: 1rem;
+}
+
+.productAll .price .price-old{
+  text-decoration: line-through;
 }
 
 /* detail Product  */
@@ -575,9 +631,10 @@ footer h4 {
 #about h3 {
   font-size: 5rem;
   color: #fff;
+  animation: slide-in 2s ease-in-out;
 }
 
-#about h4 {
+.about h4 {
   color: #fff;
 }
 
@@ -586,7 +643,7 @@ footer h4 {
 }
 
 .about .tentangKami {
-  background-image: url(./image/background_about.jpg);
+  background-image: url(./image/background_about.webp);
   background-repeat: no-repeat;
   background-size: cover;
   height: 90vh;
@@ -625,16 +682,24 @@ footer h4 {
 }
 
 .about .container .section-Mengapa {
+  background-color: #e5e5e5;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 0rem 4rem;
+  padding: 2rem 4rem;
+}
+
+.about .container .section-Mengapa h4{
+  color: #000;
+}
+
+.about .container .section-Mengapa li{
+  color: #000;
 }
 
 /* Media Query */
 
 /* Laptop */
-
 @media only screen and(max-width: 1366px) {
   html {
     font-size: 75%;
@@ -649,7 +714,7 @@ footer h4 {
 
   header {
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
   }
 
   .navbar-extra {
@@ -664,7 +729,7 @@ footer h4 {
 
   .navbar {
     position: absolute;
-    top: 4.5rem;
+    top: 6.5rem;
     height: 100vh;
     right: 0;
     background-color: #fff;
@@ -694,8 +759,18 @@ footer h4 {
     color: #ffc300;
   }
 
-  .home h1 {
-    text-align: center;
+  .home h2 {
+    font-size: 2.5rem;
+  }
+
+  .home button{
+    width: 20rem;
+    height: 5rem;
+  }
+
+  .productCategory .container {
+    justify-content: center;
+    gap: 5rem;
   }
 
   .productCard {
@@ -707,16 +782,23 @@ footer h4 {
     width: 20rem;
   }
 
+  /* testimoni */
+  .testimoni article{
+    padding: 0;
+    margin: 0;
+    gap: 3rem;
+  }
+
   /* form-search */
   header .form-search {
-    top: 4.5rem;
+    top: 6.5rem;
     height: 4rem;
     width: 35rem;
   }
 
   /* ShoppingCart */
   header .shoppingCart {
-    top: 4.5rem;
+    top: 6.5rem;
     height: auto;
     width: 80%;
     left: 10%;
@@ -767,16 +849,14 @@ footer h4 {
 /* Mobile Phone */
 @media only screen and (max-width: 450px) {
   html {
-    font-size: 75%;
+    font-size: 60%;
   }
 
-  .home h1 {
-    font-size: 5rem;
-    text-align: center;
+  .home h2 {
+    padding: 0 2rem;
   }
 
   .home article {
-    text-align: center;
     padding: 0;
   }
 
@@ -786,6 +866,7 @@ footer h4 {
 
   .productCategory h3 {
     text-align: center;
+    font-size: 2.5rem;
   }
 
   .productCard {
@@ -798,6 +879,10 @@ footer h4 {
   }
 
   /* testimoni */
+
+  .testimoni h3{
+    font-size: 2.5rem;
+  }
 
   .testimoniCard {
     width: 30rem;
@@ -818,6 +903,11 @@ footer h4 {
     left: 5%;
     height: auto;
     right: 5%;
+  }
+
+  /* map */
+  .map{
+    height: 300px;
   }
 
   
@@ -851,5 +941,10 @@ footer h4 {
     margin: 20% auto;
     padding: 1rem 0;
   }
-\
+  /* productAll */
+  .productAll .no-product{
+    font-size: 1rem;
+    color: #fff;
+    margin: 15rem 2rem;
+  }
 }
